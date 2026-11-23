@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Llavero · Licencias de software</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="#top">Llavero</a>
+    <nav>
+      <a href="#featured">Destacadas</a>
+      <a href="#offers">Ofertas</a>
+      <a href="#latest">Novedades</a>
+      <a href="#all">Catálogo</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <h1>Licencias de software, con la clave en tu pantalla al instante.</h1>
+      <p>Varias versiones de cada programa, precios claros y descuentos reales.</p>
+      <code class="hero-key" id="hero-key" aria-label="Ejemplo de clave de licencia">XXXXX-XXXX-XXXX-XXXX</code>
+    </section>
+
+    <section id="featured" class="block">
+      <div class="block-head"><h2>Destacadas</h2><p>Las favoritas de nuestros clientes.</p></div>
+      <div class="grid" id="featured-grid"></div>
+    </section>
+
+    <section id="offers" class="block">
+      <div class="block-head"><h2>Ofertas</h2><p>Los mayores descuentos ahora mismo.</p></div>
+      <div class="grid" id="offers-grid"></div>
+    </section>
+
+    <section id="latest" class="block">
+      <div class="block-head"><h2>Novedades</h2><p>La versión más reciente de cada programa.</p></div>
+      <div class="grid" id="latest-grid"></div>
+    </section>
+
+    <section id="all" class="block">
+      <div class="block-head"><h2>Catálogo completo</h2><p id="result-count"></p></div>
+      <form class="filters" id="filters" autocomplete="off">
+        <label>Buscar <input type="search" name="q" placeholder="Nombre del programa"></label>
+        <label>Categoría <select name="category"><option value="">Todas</option></select></label>
+        <label>Programa <select name="software"><option value="">Todos</option></select></label>
+        <label>Precio máximo <output id="price-out"></output><input type="range" name="maxPrice" min="0" step="5"></label>
+        <label>Ordenar <select name="sort">
+          <option value="random">Aleatorio</option>
+          <option value="price-asc">Precio: menor a mayor</option>
+          <option value="price-desc">Precio: mayor a menor</option>
+          <option value="discount">Mayor descuento</option>
+        </select></label>
+        <label class="check"><input type="checkbox" name="onlyOffers"> Solo ofertas</label>
+        <button type="button" id="reshuffle">Mezclar</button>
+      </form>
+      <div class="grid" id="all-grid"></div>
+    </section>
+  </main>
+
+  <footer><p>Llavero · Proyecto de demostración. Las claves son ficticias.</p></footer>
+
+  <script type="module" src="scripts/app.js"></script>
+</body>
+</html>

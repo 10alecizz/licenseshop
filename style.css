@@ -1,0 +1,98 @@
+/* ===== 1. Tokens ===== */
+:root {
+  --bg: #e9eff6;
+  --surface: #ffffff;
+  --ink: #12203a;
+  --muted: #5a6a82;
+  --line: #cfd9e6;
+  --accent: #2b3af0;
+  --sale: #d7263d;
+  --radius: 14px;
+  --font-head: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --max: 1120px;
+}
+
+/* ===== 2. Base ===== */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1rem/1.55 var(--font-body); }
+h1, h2, h3 { font-family: var(--font-head); line-height: 1.1; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* ===== 3. Layout ===== */
+.topbar { position: sticky; top: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center;
+  padding: .8rem max(1.25rem, calc((100% - var(--max)) / 2)); background: var(--bg); border-bottom: 1px solid var(--line); }
+.logo { font: 800 1.4rem var(--font-head); text-decoration: none; }
+.topbar nav { display: flex; gap: 1.25rem; }
+.topbar nav a { text-decoration: none; color: var(--muted); font-weight: 500; }
+.topbar nav a:hover { color: var(--accent); }
+main, footer { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; }
+.block { padding: 2.5rem 0 1rem; }
+.block-head { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.1rem; }
+.block-head h2 { font-size: 1.9rem; }
+.block-head p { margin: 0; color: var(--muted); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+footer { padding: 3rem 1.25rem; color: var(--muted); font-size: .9rem; }
+
+/* ===== 4. Hero ===== */
+.hero { padding: 4.5rem 0 2rem; }
+.hero h1 { font-size: clamp(2.2rem, 6vw, 4.2rem); font-weight: 800; max-width: 16ch; letter-spacing: -.02em; }
+.hero p { margin: 1rem 0 1.5rem; color: var(--muted); font-size: 1.15rem; max-width: 45ch; }
+.hero-key { display: inline-block; padding: .7rem 1.1rem; background: var(--ink); color: #fff; border-radius: 10px;
+  font: 600 clamp(1rem, 3.4vw, 1.6rem) ui-monospace, "Cascadia Mono", Consolas, monospace; letter-spacing: .06em; }
+
+/* ===== 5. Tarjeta de licencia (formato ticket) ===== */
+.license { position: relative; display: flex; background: var(--surface); border-radius: var(--radius);
+  border: 1px solid var(--line); overflow: hidden; }
+.license-mark { flex: 0 0 76px; display: grid; place-items: center; background: var(--c); color: #fff;
+  font: 800 2.2rem var(--font-head); border-right: 2px dashed rgb(255 255 255 / .55); }
+.license-body { flex: 1; padding: .9rem 1rem; display: flex; flex-direction: column; gap: .35rem; min-width: 0; }
+.license-cat { margin: 0; font-size: .85rem; color: var(--muted); }
+.license h3 { font-size: 1.25rem; }
+.version { display: inline-block; margin-left: .25rem; padding: .05rem .5rem; border-radius: 99px;
+  background: var(--bg); font: 600 .85rem var(--font-body); vertical-align: middle; }
+.license-foot { display: flex; justify-content: space-between; align-items: end; margin-top: auto; padding-top: .5rem; }
+.price { margin: 0; display: flex; align-items: baseline; gap: .5rem; }
+.price strong { font: 800 1.4rem var(--font-head); }
+.price s { color: var(--muted); font-size: .9rem; }
+.sale { position: absolute; top: .7rem; right: .7rem; background: var(--sale); color: #fff;
+  font-weight: 600; font-size: .8rem; padding: .1rem .5rem; border-radius: 6px; }
+.star { position: absolute; top: .45rem; right: 3.6rem; color: #e0a100; }
+.license:not(:has(.sale)) .star { right: .8rem; }
+
+/* ===== 6. Botones y filtros ===== */
+button { font: 600 .95rem var(--font-body); padding: .5rem 1rem; border: 0; border-radius: 9px;
+  background: var(--accent); color: #fff; cursor: pointer; }
+button:hover { background: #1f2cc9; }
+button.secondary { background: var(--bg); color: var(--ink); }
+button.secondary:hover { background: var(--line); }
+.filters { display: flex; flex-wrap: wrap; gap: .9rem 1rem; align-items: end; padding: 1rem;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 1.1rem; }
+.filters label { display: flex; flex-direction: column; gap: .25rem; font-size: .85rem; color: var(--muted); font-weight: 500; }
+.filters .check { flex-direction: row; align-items: center; gap: .4rem; color: var(--ink); padding-bottom: .55rem; }
+.filters input[type="search"], .filters select { font: inherit; padding: .45rem .6rem; border: 1px solid var(--line);
+  border-radius: 8px; background: #fff; color: var(--ink); min-width: 10rem; }
+.filters input[type="range"] { accent-color: var(--accent); min-width: 10rem; }
+.filters output { color: var(--ink); }
+.empty { grid-column: 1 / -1; padding: 1.5rem; background: var(--surface); border-radius: var(--radius); color: var(--muted); }
+
+/* ===== 7. Ventana de compra ===== */
+dialog { border: 0; border-radius: var(--radius); padding: 1.6rem; width: min(92vw, 420px); background: var(--surface);
+  color: var(--ink); animation: pop .18s ease-out; }
+dialog::backdrop { background: rgb(18 32 58 / .55); }
+dialog h2 { font-size: 1.5rem; margin-bottom: .3rem; }
+dialog p { margin: 0 0 1rem; color: var(--muted); }
+.key { display: block; padding: .8rem; background: var(--ink); color: #fff; border-radius: 10px; text-align: center;
+  font: 600 1.15rem ui-monospace, Consolas, monospace; letter-spacing: .06em; user-select: all; }
+.dialog-actions { display: flex; gap: .6rem; margin-top: 1.1rem; justify-content: flex-end; }
+@keyframes pop { from { transform: scale(.96); opacity: 0; } }
+
+/* ===== 8. Responsive ===== */
+@media (max-width: 600px) {
+  .topbar nav { gap: .8rem; font-size: .9rem; }
+  .grid { grid-template-columns: 1fr; }
+  .filters label, .filters input, .filters select { width: 100%; }
+}
